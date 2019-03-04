@@ -31,5 +31,15 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
+        
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/claudemendelson/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = claudenm
+	email = claude.mendelson@gmail.com
 [credential]
 	helper = osxkeychain
