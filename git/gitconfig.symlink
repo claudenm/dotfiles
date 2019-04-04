@@ -2,7 +2,7 @@
 [include]
         path = ~/.gitconfig.local
 [hub]
-        protocol = https
+        protocol = ssh
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
@@ -43,3 +43,8 @@
 	email = claude.mendelson@gmail.com
 [credential]
 	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

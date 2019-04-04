@@ -47,4 +47,17 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "^[[B" down-line-or-beginning-search # Down    export KITCHEN_DATA_BAG_SECRET_PATH="~/.secret"
+export AWS_PROFILE=dev
+export KITCHEN_DRIVER=ec2
+export AWS_SSH_KEY_ID=
+export KITCHEN_AMI=ami-41e0b93b
+export KITCHEN_CHEF_VERSION=12.14.89
+alias oawsh="aws-okta -a 10h -t 10h exec peloeng -- /usr/bin/env zsh"
+function _okta_aws() {
+  aws-okta exec peloeng -- aws "$@"
+}
+alias oaws="_okta_aws"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/gettext/bin:$PATH"
