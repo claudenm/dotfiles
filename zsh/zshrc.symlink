@@ -47,10 +47,10 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down    export KITCHEN_DATA_BAG_SECRET_PATH="~/.secret"
-export AWS_PROFILE=dev
+bindkey "^[[B" down-line-or-beginning-search # Down
+export KITCHEN_DATA_BAG_SECRET_PATH="~/.secret"
 export KITCHEN_DRIVER=ec2
-export AWS_SSH_KEY_ID=
+export AWS_SSH_KEY_ID=claude.mendelson
 export KITCHEN_AMI=ami-41e0b93b
 export KITCHEN_CHEF_VERSION=12.14.89
 alias oawsh="aws-okta -a 10h -t 10h exec peloeng -- /usr/bin/env zsh"
@@ -61,3 +61,11 @@ alias oaws="_okta_aws"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+#eval "$(chef shell-init zsh)"
+plugins=(git git-flow brew history node npm kubectl)
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -o default -F __start_kubectl k
+source /usr/local/bin/aws_zsh_completer.sh
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
