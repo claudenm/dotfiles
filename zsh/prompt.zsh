@@ -66,7 +66,18 @@ battery_status() {
   fi
 }
 
-export PROMPT=$'$(directory_name) $(git_dirty)$(need_push)\n› '
+eval orange='$FG[154]'
+
+# Show which AWS profile is used
+aws_prompt_info() {
+  if [[ -n $AWS_OKTA_PROFILE ]]; then
+    echo "%{$fg_bold[blue]%}aws:(%{$fg_bold[yellow]%}$AWS_OKTA_PROFILE%{$fg[blue]%})%{$reset_color%} "
+  fi
+}
+
+export PROMPT=$'$(aws_prompt_info)$(directory_name) $(git_dirty)$(need_push)\n› '
+
+
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }

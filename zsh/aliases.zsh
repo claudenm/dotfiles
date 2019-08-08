@@ -25,3 +25,12 @@ fixvpn () {
     done
     echo "All done"
 }
+
+switchaws() {
+    if [[ $# -eq 0 ]] ; then
+        profile=peloeng
+    else
+        profile=$1
+    fi
+    source <(aws-okta env $profile)
+}
