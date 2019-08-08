@@ -1,3 +1,4 @@
+#zmodload zsh/zprof
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -69,3 +70,12 @@ complete -o default -F __start_kubectl k
 source /usr/local/bin/aws_zsh_completer.sh
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
+
+export EDITOR="code -w"
+# Virtualenvwrapper things
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
+#zprof
+#
